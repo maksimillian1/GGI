@@ -1,4 +1,6 @@
-package com.gmail.snitchuk99.util;
+package com.gmail.snitchuk99.util.commands;
+
+import com.gmail.snitchuk99.util.FileManager;
 
 public class RepositoryChecker {
 

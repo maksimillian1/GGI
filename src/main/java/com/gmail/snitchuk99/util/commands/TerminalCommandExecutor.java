@@ -1,4 +1,4 @@
-package com.gmail.snitchuk99.util;
+package com.gmail.snitchuk99.util.commands;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -10,17 +10,17 @@ import java.util.List;
 
 public class TerminalCommandExecutor {
 
-    private static Process process;
-
-
-    public static void execCommand(String command, String path) throws IOException{
+    public static List<String> execCommand(String command, String path) throws IOException{
+        List<String> commandRes = new ArrayList<String>();
         String s;
-        process = Runtime.getRuntime().exec(command, null, new File(path));
+        Process process = Runtime.getRuntime().exec(command, null, new File(path));
         BufferedReader br = new BufferedReader(
                 new InputStreamReader(process.getInputStream()));
         while ((s = br.readLine()) != null) {
-            System.out.println("line: " + s);
+            commandRes.add(s);
         }
         process.destroy();
+        return commandRes;
     }
+
 }

@@ -22,11 +22,8 @@ public class ConnectionManager {
             url = pm.getProp("url");
             login = pm.getProp("user");
             password = pm.getProp("password");
-            Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection(url, login, password);
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -37,5 +34,13 @@ public class ConnectionManager {
 
     public static Connection getConnection() {
         return con;
+    }
+
+    public static void close(){
+        try {
+            con.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 }
